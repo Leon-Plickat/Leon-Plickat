@@ -1,25 +1,24 @@
 Hi. There is not much here, as I mostly use GitHub for contributions and as a
 backup-host for a few projects. To see all my things, [visit me on sourcehut](http://sr.ht/~leon_plickat).
 
-```c
-#include<universe/sol/terra/creature/homo-sapiens.h>
+```zig
+const HomoSapiens = @import("universe").sol.terra.creatures.HomoSapiens;
 
-static const struct Human lhp = {
-	.name     = "Leon Henrik Plickat",
-	.email    = "leonhenrik.plickat@stud.uni-goettingen.de",
-	.irc_nick = "leon-p",
-	.projects = import_git_repos_from_url("https://git.sr.ht/~leon_plickat"),
-	.position = position_from_string("germany"),
-	.skills   = skill_list_from_string_array({ "wayland", "linux", "cooking", "physics" }),
-	.trivia = trivia_list_from_string_array({
+var lph = HomoSapiens {
+	.name     = Name.newFrom([_]const u8{ "Leon", "Henrik" }, "Plickat"),
+	.email    = Email.newFrom("leonhenrik.plickat@stud.uni-goettingen.de"),
+	.irc_nick = irc.Nick.newFrom("leon-p"),
+	.projects = Project.importArrayFromGit("https://git.sr.ht/~leon_plickat"),
+	.position = .germany,
+	.skills   = Skills.newArrayFrom([_]const u8{ "wayland", "linux", "cooking", "math", "physics" }),
+	.trivia   = Trivia.newArrayFrom([_]const u8{
 		"likes really verbose names for functions and variables",
 		"does not have a cool story about how he started programming",
-		"drinks lots of water",
-		"you probably will not like his brace placement style",
+		"regularly consumes food with considerable amounts of chilli",
+		"has watched the entirety of Star Trek TNG at least six times (seventh pending)",
 		"does not like manually positioning windows on a screen",
-		"regularly consumes food with lots of chilli",
-		"has watched the entirety of Star Trek TNG at least six times",
-		"mostly likes music that fits into the left and center of the periodic table",
-		"luckily does not have a blog, as he would probably only use it for 'considered harmful' rants" })
+		"mostly likes music from the left and center of the periodic table",
+		"would write tons of 'considered harmful' rants, if he had a blog",
+	}),
 };
 ```
